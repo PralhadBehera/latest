@@ -1,0 +1,40 @@
+<div class="container ms-5 mt-5">
+  <div class="row">
+    <div class="col-4">
+      <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+          <label class="form-label"> Name </label>
+          <input type="text" class="form-control" id="name" [(ngModel)]="name" name="name" required>
+        </div>
+        <div class="mb-3">
+          <label class="form-label"> Address </label>
+          <input type="text" class="form-control" id="address" [(ngModel)]="address" name="address" required>
+        </div>
+        <button type="submit" class="btn btn-primary">{{ editMode ? 'Update' : 'Submit' }}</button>
+      </form>
+    </div>
+    <div class="col-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let entry of entries; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ entry.name }}</td>
+            <td>{{ entry.address }}</td>
+            <td class="m-0">
+              <img (click)="editEntry(i)" width="25" height="25" class="me-2" src="https://img.icons8.com/cotton/128/edit--v1.png" alt="edit--v1"/>
+              <img (click)="deleteEntry(i)" width="25" height="25" src="https://img.icons8.com/emoji/48/cross-mark-emoji.png" alt="cross-mark-emoji"/>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
